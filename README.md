@@ -4,8 +4,8 @@ Privacy Policy and Terms of Use for **Arise: Your Daily Booster**, an Android ap
 
 ## Live pages
 
-- [Privacy Policy](https://github.com/suanile10.github.io/arise-legal/privacy-policy.html)
-- [Terms of Use](https://github.com/suanile10.github.io/arise-legal/terms-of-use.html)
+- [Privacy Policy](https://suanile10.github.io/arise-legal/privacy-policy.html)
+- [Terms of Use](https://suanile10.github.io/arise-legal/terms-of-use.html)
 
 
 ## About the app

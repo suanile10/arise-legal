@@ -3,24 +3,395 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Arise — Legal</title>
+<title>Arise — Your Daily Booster</title>
+<meta name="description" content="Short motivational quotes at the times you choose, and a 100-day habit tracker. Works offline. No account. Android.">
+<meta property="og:title" content="Arise — Your Daily Booster">
+<meta property="og:description" content="Motivation fades. Consistency wins. 840 quotes, timed to your day, plus a 100-day habit tracker.">
+<meta property="og:image" content="img/screen-today.png">
+<meta name="theme-color" content="#0D0D0F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Poppins:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-       max-width:640px;margin:0 auto;padding:60px 24px;line-height:1.7;
-       background:#0d0d0f;color:#fff}
-  h1{font-size:2.4rem;margin-bottom:.2rem}
-  .sub{color:#fdba74;margin-bottom:2.5rem}
-  a{display:block;padding:16px 20px;margin-bottom:12px;background:#17171a;
-    border-left:4px solid #f97316;border-radius:6px;color:#fff;text-decoration:none}
-  a:hover{background:#232327}
-  footer{margin-top:3rem;color:#9ca3af;font-size:.9rem}
+:root{
+  --ink:#0D0D0F;
+  --surface:#17171A;
+  --surface-2:#232327;
+  --line:#2A2A30;
+  --sun:#F97316;
+  --dawn:#FDBA74;
+  --night:#312E81;
+  --cream:#FAF8F5;
+  --dim:#9CA3AF;
+  --display:"Roboto Condensed",Impact,sans-serif;
+  --body:"Poppins",-apple-system,BlinkMacSystemFont,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:var(--body);line-height:1.65;
+     -webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* ---------- shared type ---------- */
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+         color:var(--sun)}
+.display{font-family:var(--display);text-transform:uppercase;line-height:.92;letter-spacing:-.01em}
+.lede{color:#D1D5DB;font-size:1.06rem;max-width:46ch}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:88px 0 96px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(1100px 520px at 78% 118%, rgba(49,46,129,.55), transparent 62%);
+  pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.mark{display:flex;align-items:center;gap:12px;margin-bottom:38px}
+.mark-sun{width:26px;height:26px;position:relative;flex:none}
+.mark-sun i{position:absolute;left:0;right:0;bottom:7px;height:13px;
+  background:var(--sun);border-radius:13px 13px 0 0;display:block}
+.mark-sun u{position:absolute;left:0;right:0;bottom:4px;height:3px;background:var(--cream);
+  border-radius:2px;display:block}
+.mark span{font-family:var(--mono);font-size:.74rem;letter-spacing:.24em;color:var(--dim);
+  text-transform:uppercase}
+h1{font-family:var(--display);text-transform:uppercase;font-size:clamp(3.4rem,8.2vw,6.4rem);
+   line-height:.88;letter-spacing:-.015em;margin:0 0 26px}
+h1 em{font-style:normal;color:var(--sun);display:block}
+.hero .lede{font-size:1.14rem;margin-bottom:36px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--sun);color:#1A0E04;
+  font-weight:600;font-size:.98rem;padding:15px 26px;border-radius:10px;text-decoration:none;
+  transition:transform .18s ease,box-shadow .18s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(249,115,22,.28)}
+.btn-ghost{background:transparent;color:var(--cream);border:1px solid var(--line);font-weight:500}
+.btn-ghost:hover{border-color:var(--sun);box-shadow:none}
+.status{font-family:var(--mono);font-size:.76rem;color:var(--dim);margin-top:18px;
+  display:flex;align-items:center;gap:9px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--dawn);flex:none;
+  box-shadow:0 0 0 4px rgba(253,186,116,.14)}
+
+/* ---------- phone ---------- */
+.phone{position:relative;width:100%;max-width:290px;margin:0 auto;
+  border:9px solid #1C1C21;border-radius:38px;overflow:hidden;
+  box-shadow:0 34px 80px rgba(0,0,0,.66),0 0 0 1px rgba(255,255,255,.05)}
+.phone img{display:block;width:100%;height:auto}
+.phone-tilt{transform:rotate(-2.2deg)}
+
+/* ---------- section frame ---------- */
+section{padding:96px 0;position:relative}
+.sec-head{margin-bottom:52px;max-width:60ch}
+.sec-head h2{font-family:var(--display);text-transform:uppercase;
+  font-size:clamp(2rem,4.4vw,3.1rem);line-height:.98;margin:12px 0 16px}
+
+/* ---------- moments (times as structure) ---------- */
+.moments{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);
+  border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.moment{background:var(--ink);padding:36px 30px}
+.moment .t{font-family:var(--mono);font-size:1.5rem;color:var(--sun);letter-spacing:-.02em}
+.moment h3{font-family:var(--display);text-transform:uppercase;font-size:1.42rem;
+  margin:14px 0 10px;letter-spacing:.01em}
+.moment p{color:var(--dim);font-size:.94rem}
+.moment .q{margin-top:20px;padding-top:18px;border-top:1px dashed var(--line);
+  color:var(--dawn);font-size:.94rem}
+
+/* ---------- chain (signature) ---------- */
+.chain-sec{background:linear-gradient(180deg,var(--ink) 0%,#121218 100%)}
+.chain-wrap{display:grid;grid-template-columns:1fr 1.25fr;gap:60px;align-items:center}
+.chain{display:grid;grid-template-columns:repeat(10,1fr);gap:8px}
+.cell{aspect-ratio:1;border-radius:5px;background:var(--surface-2);
+  transform:scale(.55);opacity:.28}
+.chain.go .cell{animation:pop .5s cubic-bezier(.2,.8,.3,1) forwards}
+.cell.on{background:var(--sun)}
+.cell.half{background:rgba(249,115,22,.42)}
+@keyframes pop{to{transform:scale(1);opacity:1}}
+.chain-stats{display:flex;gap:38px;margin-top:34px;flex-wrap:wrap}
+.stat .n{font-family:var(--mono);font-size:2.1rem;color:var(--cream);line-height:1}
+.stat .l{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--dim);margin-top:7px}
+
+/* ---------- habits ---------- */
+.habits{display:grid;grid-template-columns:repeat(2,1fr);gap:0 44px}
+.habit{display:flex;align-items:center;gap:16px;padding:17px 0;border-bottom:1px solid var(--line)}
+.habit .tick{width:26px;height:26px;border-radius:50%;border:2px solid var(--sun);flex:none;
+  position:relative}
+.habit .tick::after{content:"";position:absolute;left:7px;top:5px;width:7px;height:12px;
+  border:solid var(--sun);border-width:0 2px 2px 0;transform:rotate(42deg)}
+.habit span{font-size:1rem}
+.habit .no{font-family:var(--mono);font-size:.74rem;color:var(--dim);margin-left:auto}
+
+/* ---------- screens ---------- */
+.screens{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;align-items:start}
+.screen-cap{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);text-align:center;margin-top:20px}
+
+/* ---------- facts ---------- */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);
+  border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.fact{background:var(--ink);padding:30px 24px;text-align:center}
+.fact .n{font-family:var(--display);font-size:2rem;color:var(--sun);line-height:1}
+.fact .l{font-size:.88rem;color:var(--dim);margin-top:9px}
+
+/* ---------- dawn cta ---------- */
+.dawn{position:relative;padding:120px 0 100px;overflow:hidden;text-align:center;
+  background:linear-gradient(180deg,#121218 0%,#241C3A 42%,#6B3A18 84%,#B4550F 100%)}
+.dawn::after{content:"";position:absolute;left:50%;bottom:-590px;width:760px;height:760px;
+  transform:translateX(-50%);border-radius:50%;background:var(--sun);opacity:.95}
+.dawn .inner{position:relative;z-index:2}
+.dawn h2{font-family:var(--display);text-transform:uppercase;
+  font-size:clamp(2.4rem,6vw,4.2rem);line-height:.94;margin-bottom:18px}
+.dawn p{color:#F8EEE3;margin:0 auto 34px;max-width:40ch}
+.dawn .btn{background:var(--ink);color:var(--cream)}
+.dawn .btn:hover{box-shadow:0 12px 34px rgba(0,0,0,.4)}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);padding:56px 0 46px;border-top:1px solid var(--line)}
+.foot{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;align-items:flex-start}
+.foot a{color:var(--dim);text-decoration:none;font-size:.92rem;display:block;padding:4px 0}
+.foot a:hover{color:var(--sun)}
+.foot h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream);margin-bottom:12px}
+.legal{color:#6B7280;font-size:.82rem;margin-top:40px;padding-top:22px;border-top:1px solid var(--line)}
+.disclaim{color:#6B7280;font-size:.8rem;max-width:70ch;margin-top:10px;line-height:1.6}
+
+/* ---------- reveal ---------- */
+.rise{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rise.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .hero-grid,.chain-wrap{grid-template-columns:1fr;gap:46px}
+  .moments,.habits,.screens,.facts{grid-template-columns:1fr}
+  .screens{gap:44px}
+  .facts .fact{padding:24px}
+  .phone-tilt{transform:none}
+  section{padding:72px 0}
+  .dawn::after{width:520px;height:520px;bottom:-410px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rise{opacity:1;transform:none}
+  .cell{transform:none;opacity:1}
+}
 </style>
 </head>
 <body>
-  <h1>ARISE</h1>
-  <p class="sub">Your Daily Booster — by Fit With Sunil</p>
-  <a href="privacy-policy.html">Privacy Policy</a>
-  <a href="terms-of-use.html">Terms of Use</a>
-  <footer>@fitwithsunilg &middot; #NoZeroDays</footer>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="mark">
+        <span class="mark-sun"><i></i><u></u></span>
+        <span>Fit With Sunil</span>
+      </div>
+      <h1>Motivation<br>fades.<em>Consistency<br>wins.</em></h1>
+      <p class="lede">Arise sends you one short line at the times you choose — 5 AM, midday, before
+        bed — and gives you a hundred squares to fill. One for every day you showed up.</p>
+      <div class="cta-row">
+        <!-- Once Arise is live, swap href for:
+             https://play.google.com/store/apps/details?id=com.fitwithsunil.arise -->
+        <a class="btn" href="#what">See how it works</a>
+        <a class="btn btn-ghost" href="#chain">The 100 days</a>
+      </div>
+      <p class="status"><span class="dot"></span> Coming soon to Google Play — Android</p>
+    </div>
+    <div class="phone phone-tilt rise">
+      <img src="img/screen-today.png" alt="The Arise home screen showing a morning quote">
+    </div>
+  </div>
+</header>
+
+<!-- ================= MOMENTS ================= -->
+<section id="what">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Three moments a day</p>
+      <h2>It finds you when it counts</h2>
+      <p class="lede">Not a feed to scroll. Three short interruptions, at hours that decide the day.
+        You pick the times — hourly if you want it, three times a day if you don't.</p>
+    </div>
+    <div class="moments rise">
+      <div class="moment">
+        <p class="t">05:30</p>
+        <h3>The hard part</h3>
+        <p>The alarm went off and the bed is winning. One line, read in three seconds, while your
+          feet are still deciding.</p>
+        <p class="q">“Stand up first. Motivation comes second.”</p>
+      </div>
+      <div class="moment">
+        <p class="t">13:00</p>
+        <h3>The dip</h3>
+        <p>Half the day gone, focus scattered. A reset that doesn't need you to open anything or
+          read anything long.</p>
+        <p class="q">“The afternoon slump is a test, not a verdict.”</p>
+      </div>
+      <div class="moment">
+        <p class="t">21:00</p>
+        <h3>The count</h3>
+        <p>Before sleep, the honest question. Tick what you did, plan tomorrow, protect the chain.</p>
+        <p class="q">“Was today a zero? You still have minutes.”</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CHAIN — signature ================= -->
+<section id="chain" class="chain-sec">
+  <div class="wrap chain-wrap">
+    <div class="rise">
+      <p class="eyebrow">The tracker</p>
+      <h2 style="font-family:var(--display);text-transform:uppercase;font-size:clamp(2rem,4.4vw,3.1rem);line-height:.98;margin:12px 0 16px">
+        One square<br>a day</h2>
+      <p class="lede">Eight habits, a hundred days, one grid. Solid means you did all eight. Faded
+        means you did something. Empty means a zero — and the whole point is not to have one.</p>
+      <div class="chain-stats">
+        <div class="stat"><div class="n">100</div><div class="l">Days</div></div>
+        <div class="stat"><div class="n">8</div><div class="l">Daily habits</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">Zero days</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="chain" id="chainGrid" aria-hidden="true"></div>
+      <p class="screen-cap" style="text-align:left;margin-top:22px">Day 1 → Day 100</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HABITS ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">The eight</p>
+      <h2>What you tick</h2>
+      <p class="lede">The same eight every day. Small versions count — a ten-minute walk is still
+        exercise, one page is still reading. Something always beats nothing.</p>
+    </div>
+    <div class="habits rise">
+      <div class="habit"><span class="tick"></span><span>Wake up at 5 AM</span><span class="no">01</span></div>
+      <div class="habit"><span class="tick"></span><span>Cold shower</span><span class="no">02</span></div>
+      <div class="habit"><span class="tick"></span><span>Meditation</span><span class="no">03</span></div>
+      <div class="habit"><span class="tick"></span><span>Prayer or gratitude</span><span class="no">04</span></div>
+      <div class="habit"><span class="tick"></span><span>Exercise</span><span class="no">05</span></div>
+      <div class="habit"><span class="tick"></span><span>Healthy food</span><span class="no">06</span></div>
+      <div class="habit"><span class="tick"></span><span>Reading</span><span class="no">07</span></div>
+      <div class="habit"><span class="tick"></span><span>Focused building</span><span class="no">08</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCREENS ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Inside the app</p>
+      <h2>Four screens. Nothing else.</h2>
+    </div>
+    <div class="screens rise">
+      <div>
+        <div class="phone"><img src="img/screen-today.png" alt="Today screen with a morning quote and share buttons"></div>
+        <p class="screen-cap">Today — the quote for right now</p>
+      </div>
+      <div>
+        <div class="phone"><img src="img/screen-tracker.png" alt="Tracker screen showing day 23 of 100 and the habit list"></div>
+        <p class="screen-cap">Tracker — eight habits, one chain</p>
+      </div>
+      <div>
+        <div class="phone"><img src="img/screen-quotes.png" alt="Quotes screen showing browsable quote cards"></div>
+        <p class="screen-cap">Quotes — all 840, saved and shareable</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FACTS ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Plainly</p>
+      <h2>What you're installing</h2>
+    </div>
+    <div class="facts rise">
+      <div class="fact"><div class="n">840</div><div class="l">Original quotes, written for this app</div></div>
+      <div class="fact"><div class="n">Offline</div><div class="l">Everything is inside the app</div></div>
+      <div class="fact"><div class="n">No account</div><div class="l">No sign-up, no email, no password</div></div>
+      <div class="fact"><div class="n">Free</div><div class="l">Supported by ads</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DAWN CTA ================= -->
+<section class="dawn">
+  <div class="wrap inner">
+    <h2>One hundred days.<br>Zero excuses.</h2>
+    <p>Start tomorrow at 5 AM. Or start today, badly, right now — that counts too.</p>
+    <!-- Once live, swap href for the Play Store listing -->
+    <a class="btn" href="https://instagram.com/fitwithsunilg">Follow @fitwithsunilg</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="mark" style="margin-bottom:14px">
+          <span class="mark-sun"><i></i><u></u></span>
+          <span>Arise — Your Daily Booster</span>
+        </div>
+        <p style="color:#6B7280;font-size:.9rem;max-width:34ch">Built by Sunil Tamang.
+          An Android app for people who are tired of starting over.</p>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="arise-legal/privacy-policy.html">Privacy Policy</a>
+        <a href="arise-legal/terms-of-use.html">Terms of Use</a>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <a href="https://instagram.com/fitwithsunilg">Instagram</a>
+        <a href="mailto:sunillamatamang33@gmail.com">Contact</a>
+      </div>
+    </div>
+    <p class="legal">© 2026 Sunil Tamang. All rights reserved.</p>
+    <p class="disclaim">Arise provides motivational content and a habit tracker. It is not medical,
+      psychological, or professional advice. Cold water exposure, early waking, and exercise carry
+      risk for some people — talk to a doctor before starting, particularly if you have a health
+      condition, are pregnant, take medication, or are under 18.</p>
+  </div>
+</footer>
+
+<script>
+// Build the 100-day chain. Filled cells describe a realistic run, not a perfect one.
+(function(){
+  const chain = document.getElementById('chainGrid');
+  if(!chain) return;
+  const full = new Set(), part = new Set();
+  for(let d=1; d<=100; d++){
+    if(d<=64){ (d%9===0 ? part : full).add(d); }        // strong early run, a few partial days
+    else if(d<=72){ part.add(d); }                       // a rough week — still not zero
+    else if(d<=88){ (d%11===0 ? part : full).add(d); }
+  }
+  const frag = document.createDocumentFragment();
+  for(let d=1; d<=100; d++){
+    const c = document.createElement('div');
+    c.className = 'cell' + (full.has(d) ? ' on' : part.has(d) ? ' half' : '');
+    c.style.animationDelay = (d*11) + 'ms';
+    frag.appendChild(c);
+  }
+  chain.appendChild(frag);
+
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ chain.classList.add('go'); io.disconnect(); }});
+  },{threshold:.25});
+  io.observe(chain);
+})();
+
+// Gentle reveal on scroll
+(function(){
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+  },{threshold:.12});
+  document.querySelectorAll('.rise').forEach(el=>io.observe(el));
+})();
+</script>
+
 </body>
 </html>
